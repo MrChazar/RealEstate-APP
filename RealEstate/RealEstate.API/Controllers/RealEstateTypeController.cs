@@ -13,37 +13,39 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class RealEstateTypeController : ControllerBase
     {
-        private static List<RealEstateTypeDTO> _realEstates = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" }, new RealEstateTypeDTO { Name = "Plot" }, new RealEstateTypeDTO { Name = "Office" } };
+        private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" , Description = "Simple As" }, new RealEstateTypeDTO { Name = "Plot" }, new RealEstateTypeDTO { Name = "Office" } };
 
         [HttpGet("Search",Name = "SearchRealEstateType")]
         public IEnumerable<RealEstateTypeDTO> Search([Required] string partOfName )
         {
-            return _realEstates.Where(x => x.Name.Contains(partOfName,StringComparison.OrdinalIgnoreCase));
+            return _realEstatesType.Where(x => x.Name.Contains(partOfName,StringComparison.OrdinalIgnoreCase));
         }
 
         
         [HttpPost("Post",Name ="PostRealEstateType")]
-        public IEnumerable<RealEstateTypeDTO> Post([Required] string name, string description)
+        public IEnumerable<RealEstateTypeDTO> Post([FromBody]CreateRealEstateTypeDTO dto)
         {
-            if (_realEstates.Any(x => x.Name == name))
+            if (_realEstatesType.Any(x => x.Name == dto.Name))
             {
-                return _realEstates; 
+                return _realEstatesType; 
             }
-            _realEstates.Add(new RealEstateTypeDTO { Name = name, Description = description } );
-            return _realEstates;
+
+            _realEstatesType.Add(new RealEstateTypeDTO { Name = dto.Name, Description = dto.Description } );
+            return _realEstatesType;
         }
 
-        [HttpDelete("Delete", Name = "DeleteRealEstateType")]
+     //   [HttpDelete("Delete", Name = "DeleteRealEstateType")]
+        [HttpDelete]
         public IEnumerable<RealEstateTypeDTO> Delete([Required] string name)
         {
-            _realEstates.RemoveAll(x => x.Name.Equals(name));
-            return _realEstates;
+            _realEstatesType.RemoveAll(x => x.Name.Equals(name));
+            return _realEstatesType;
         }
 
         [HttpGet("Get",Name = "GetRealEstateType")]
         public IEnumerable<RealEstateTypeDTO> Get()
         {
-            return _realEstates;
+            return _realEstatesType;
         }
     }
 }
