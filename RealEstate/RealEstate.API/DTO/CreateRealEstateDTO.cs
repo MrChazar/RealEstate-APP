@@ -7,7 +7,7 @@ namespace RealEstate.API.DTO
     {
         [Required]
         [StringLength(100, MinimumLength = 3)]
-        [RegularExpression("[A-Za-z]+ [A-Za-z0-9]+")]
+        [RegularExpression("[A-Za-z]+ [0-9]+")]
         public string Adress { get; set; }
         [Required]
         [Range(10, (double)Decimal.MaxValue)]
@@ -15,7 +15,7 @@ namespace RealEstate.API.DTO
         [Required]
         [Range(1,10)]
         public int Rating { get; set; }
-        public bool IsHighlyRated => Rating > 5;
         public decimal PricePerMetre { get; set; }
+        public bool IsHighlyRated => Rating > 5;
     }
 }

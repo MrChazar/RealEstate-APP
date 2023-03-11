@@ -16,14 +16,14 @@ namespace RealEstate.API.Controllers
         private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" , Description = "Simple As" }, new RealEstateTypeDTO { Name = "Plot" }, new RealEstateTypeDTO { Name = "Office" } };
 
         [HttpGet("Search",Name = "SearchRealEstateType")]
-        public IEnumerable<RealEstateTypeDTO> Search([Required] string partOfName )
+        public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Search([Required] string partOfName )
         {
-            return _realEstatesType.Where(x => x.Name.Contains(partOfName,StringComparison.OrdinalIgnoreCase));
+            return Ok(_realEstatesType.Where(x => x.Name.Contains(partOfName,StringComparison.OrdinalIgnoreCase)));
         }
 
         
         [HttpPost("Post",Name ="PostRealEstateType")]
-        public IEnumerable<RealEstateTypeDTO> Post([FromBody]CreateRealEstateTypeDTO dto)
+        public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Post([FromBody]CreateRealEstateTypeDTO dto)
         {
             if (_realEstatesType.Any(x => x.Name == dto.Name))
             {

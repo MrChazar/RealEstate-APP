@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.DTO;
+using RealEstate.API.Model;
 using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.API.Controllers
@@ -8,30 +9,60 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class RealEstateController : ControllerBase
     {
-        private static List<RealEstateDTO> _realEstates = new List<RealEstateDTO>() {new RealEstateDTO { Address = "Wittiga",PricePerMetre = 100, Area = 20, Rating = 9 , Price=100*230 } };
+        private DataContext _dataContext;
 
-        [HttpGet("Search", Name = "SearchRealEstate")]
-        public IEnumerable<RealEstateDTO> Search([Required] string partOfName)
+        public RealEstateController(DataContext dataContext)
         {
-            return _realEstates.Where(x => x.Address.Contains(partOfName, StringComparison.OrdinalIgnoreCase));
+            _dataContext = dataContext;
         }
 
-        [HttpPost("Post", Name = "PostRealEstate")]
-        public IEnumerable<RealEstateDTO> Post([FromBody]CreateRealEstateDTO dto)
-        {
-            if (_realEstates.Any(x => x.Address == dto.Adress))
-            {
-                return _realEstates;
-            }
 
-            _realEstates.Add(new RealEstateDTO { Address = dto.Adress, Area = dto.Area, Rating = dto.Rating, PricePerMetre= dto.PricePerMetre, Price = dto.Area*dto.PricePerMetre });
-            return _realEstates;
+        [HttpGet("Search", Name = "SearchRealEstate")]
+        public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Search([Required] string partOfName)
+        {
+            var mod = _dataContext.RealEstates.Where(y => y.Address.Contains(partOfName));
+            var result = mod.Select(x => new RealEstateDTO 
+            {
+                RealEstateId = x.Id,
+                Address = x.Address,
+                Area = x.Area, 
+                PricePerMetre = x.PricePerMetre, 
+                Price = x.Area * x.PricePerMetre, 
+                Rating = x.Rating 
+            });
+            return Ok(result);
+        }
+        
+        [HttpPost("Post", Name = "PostRealEstate")]
+        public async Task<ActionResult> Post([FromBody]CreateRealEstateDTO dto)
+        {
+            var input = new RealEstateModel
+            {
+                Address = dto.Adress,
+                Area = dto.Area,
+                PricePerMetre = dto.PricePerMetre,
+                Price = dto.PricePerMetre * dto.Area,
+                Rating = dto.Rating
+            };
+            _dataContext.RealEstates.Add(input);
+            _dataContext.SaveChanges();
+            return Ok();
         }
 
         [HttpGet("Get", Name = "GetRealEstate")]
-        public IEnumerable<RealEstateDTO> Get()
+        public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Get()
         {
-            return _realEstates;
+            var mod = _dataContext.RealEstates;
+            var result = mod.Select(x => new RealEstateDTO
+            {
+                RealEstateId = x.Id,
+                Address = x.Address,
+                Area = x.Area,
+                PricePerMetre = x.PricePerMetre,
+                Price = x.Area * x.PricePerMetre,
+                Rating = x.Rating
+            });
+            return Ok(result);
         }
 
     }

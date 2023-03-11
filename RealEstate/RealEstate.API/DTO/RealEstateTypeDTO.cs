@@ -5,12 +5,13 @@ using System.Runtime.InteropServices;
 
 namespace RealEstate.API.DTO
 {
+    
     public class RealEstateTypeDTO
     {
-
         public string Name { get; set; }
-
+       
         public string Description { get; set; }
+        
         
     }
 }
