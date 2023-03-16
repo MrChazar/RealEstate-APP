@@ -21,20 +21,21 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Search([Required] string partOfName)
         {
             var mod = _dataContext.RealEstates.Where(y => y.Address.Contains(partOfName));
-            var result = mod.Select(x => new RealEstateDTO 
+            var result = mod.Select(x => new RealEstateDTO
             {
                 RealEstateId = x.Id,
                 Address = x.Address,
-                Area = x.Area, 
-                PricePerMetre = x.PricePerMetre, 
-                Price = x.Area * x.PricePerMetre, 
-                Rating = x.Rating 
+                Area = x.Area,
+                PricePerMetre = x.PricePerMetre,
+                Price = x.Area * x.PricePerMetre,
+                Rating = x.Rating,
+                RealEstateTypeId = x.RealEstateTypeId
             });
             return Ok(result);
         }
-        
+
         [HttpPost("Post", Name = "PostRealEstate")]
-        public async Task<ActionResult> Post([FromBody]CreateRealEstateDTO dto)
+        public async Task<ActionResult> Post([FromBody] CreateRealEstateDTO dto)
         {
             var input = new RealEstateModel
             {
@@ -42,7 +43,8 @@ namespace RealEstate.API.Controllers
                 Area = dto.Area,
                 PricePerMetre = dto.PricePerMetre,
                 Price = dto.PricePerMetre * dto.Area,
-                Rating = dto.Rating
+                Rating = dto.Rating,
+                RealEstateTypeId = dto.RealEstateTypeId
             };
             _dataContext.RealEstates.Add(input);
             _dataContext.SaveChanges();
@@ -60,7 +62,8 @@ namespace RealEstate.API.Controllers
                 Area = x.Area,
                 PricePerMetre = x.PricePerMetre,
                 Price = x.Area * x.PricePerMetre,
-                Rating = x.Rating
+                Rating = x.Rating,
+                RealEstateTypeId = x.RealEstateTypeId
             });
             return Ok(result);
         }

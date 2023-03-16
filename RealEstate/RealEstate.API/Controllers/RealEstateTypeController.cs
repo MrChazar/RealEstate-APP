@@ -13,7 +13,7 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class RealEstateTypeController : ControllerBase
     {
-        private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" , Description = "Simple As" }, new RealEstateTypeDTO { Name = "Plot" }, new RealEstateTypeDTO { Name = "Office" } };
+        private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" , Description = "Simple As" }};
 
         [HttpGet("Search",Name = "SearchRealEstateType")]
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Search([Required] string partOfName )

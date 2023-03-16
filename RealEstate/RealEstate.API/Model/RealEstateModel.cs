@@ -1,4 +1,5 @@
-﻿using RealEstate.API.DTO;
+﻿using Microsoft.Extensions.Hosting;
+using RealEstate.API.DTO;
 
 namespace RealEstate.API.Model
 {
@@ -13,5 +14,8 @@ namespace RealEstate.API.Model
        // public bool IsHighlyRated => Rating > 5;
         public decimal PricePerMetre { get; set; }
         public decimal Price { get; set; }
+        public int RealEstateTypeId { get; set; }
+        public RealEstateTypeModel RealEstateType { get; set; }
+
     }
 }

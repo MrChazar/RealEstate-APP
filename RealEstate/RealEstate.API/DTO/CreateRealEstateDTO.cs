@@ -16,6 +16,7 @@ namespace RealEstate.API.DTO
         [Range(1,10)]
         public int Rating { get; set; }
         public decimal PricePerMetre { get; set; }
+        public int RealEstateTypeId { get; set; }
         public bool IsHighlyRated => Rating > 5;
     }
 }
