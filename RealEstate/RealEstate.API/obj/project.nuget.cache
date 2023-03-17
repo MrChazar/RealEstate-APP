@@ -1,14 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "lgXIcWx19y4Vc2u56UIOpZiLK2ll9XUUytFv73q9XN4KefK64A0txcRvObgAT42p0w9EO4onBdm4RbHn3QYVXQ==",
+  "dgSpecHash": "cAuj+Tz3shAyqqZoDzum/BmxCFfhQ/yXXqxf54NN1ZwpdzJjJeZ+K30IWLRdYGOLzCdtBKsNhWfvF6LcC0JAWQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\Desktop\\prace kuby\\Programowanie\\C#\\rep\\RealEstate\\RealEstate.API\\RealEstate.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.3\\microsoft.entityframeworkcore.7.0.3.nupkg.sha512",

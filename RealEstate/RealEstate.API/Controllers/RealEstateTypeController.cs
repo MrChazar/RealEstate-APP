@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using RealEstate.API.DTO;
+using RealEstate.API.Model;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -13,39 +15,66 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class RealEstateTypeController : ControllerBase
     {
-        private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO>() { new RealEstateTypeDTO { Name = "Apartment" , Description = "Simple As" }};
+        private DataContext _dataContext;
+        private readonly IMapper _mapper;
+
+        private static List<RealEstateTypeDTO> _realEstatesType = new List<RealEstateTypeDTO> { new RealEstateTypeDTO { Name = "Te", Description = "Całe" } };
+        public RealEstateTypeController(DataContext dataContext, IMapper mapper)
+        {
+            _dataContext = dataContext;
+            _mapper = mapper;
+        }
 
         [HttpGet("Search",Name = "SearchRealEstateType")]
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Search([Required] string partOfName )
         {
-            return Ok(_realEstatesType.Where(x => x.Name.Contains(partOfName,StringComparison.OrdinalIgnoreCase)));
+            var mod = _dataContext.RealEstateTypes.Where(y => y.Name.Contains(partOfName));
+            var result = _mapper.Map<RealEstateTypeDTO>(mod);
+            return Ok(result);
         }
 
         
         [HttpPost("Post",Name ="PostRealEstateType")]
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Post([FromBody]CreateRealEstateTypeDTO dto)
         {
-            if (_realEstatesType.Any(x => x.Name == dto.Name))
+            if (_dataContext.RealEstateTypes.Any(x => x.Name == dto.Name))
             {
-                return _realEstatesType; 
+                return NotFound(); 
             }
 
-            _realEstatesType.Add(new RealEstateTypeDTO { Name = dto.Name, Description = dto.Description } );
-            return _realEstatesType;
+            var input = _mapper.Map<RealEstateTypeModel>(dto);
+            _dataContext.RealEstateTypes.Add(input);
+            _dataContext.SaveChanges();
+            return Ok();
         }
 
      //   [HttpDelete("Delete", Name = "DeleteRealEstateType")]
         [HttpDelete]
-        public IEnumerable<RealEstateTypeDTO> Delete([Required] string name)
+        public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Delete([Required] string name)
         {
-            _realEstatesType.RemoveAll(x => x.Name.Equals(name));
-            return _realEstatesType;
+            
+            var entityToDelete = _dataContext.RealEstateTypes.FirstOrDefault(x => x.Name == name);
+            if (entityToDelete == null)
+            {
+                return NotFound(); // Return 404 if entity not found
+            }
+
+            // Remove the entity from the context and save changes
+            _dataContext.RealEstateTypes.Remove(entityToDelete);
+            _dataContext.SaveChanges();
+
+            // Map and return the remaining entities as DTOs
+            var remainingEntities = _dataContext.RealEstateTypes.ToList();
+            var result = _mapper.Map<IEnumerable<RealEstateTypeDTO>>(remainingEntities);
+            return Ok(result);
         }
 
         [HttpGet("Get",Name = "GetRealEstateType")]
-        public IEnumerable<RealEstateTypeDTO> Get()
+        public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Get()
         {
-            return _realEstatesType;
+            var mod = _dataContext.RealEstateTypes;
+            var result = _mapper.Map<RealEstateTypeDTO>(mod);
+            return Ok(result);
         }
     }
 }

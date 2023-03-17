@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.DTO;
 using RealEstate.API.Model;
 using System.ComponentModel.DataAnnotations;
+using System.Xml;
 
 namespace RealEstate.API.Controllers
 {
@@ -10,10 +12,12 @@ namespace RealEstate.API.Controllers
     public class RealEstateController : ControllerBase
     {
         private DataContext _dataContext;
+        private readonly IMapper _mapper;
 
-        public RealEstateController(DataContext dataContext)
+        public RealEstateController(DataContext dataContext,IMapper mapper)
         {
             _dataContext = dataContext;
+            _mapper = mapper;
         }
 
 
@@ -21,31 +25,14 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Search([Required] string partOfName)
         {
             var mod = _dataContext.RealEstates.Where(y => y.Address.Contains(partOfName));
-            var result = mod.Select(x => new RealEstateDTO
-            {
-                RealEstateId = x.Id,
-                Address = x.Address,
-                Area = x.Area,
-                PricePerMetre = x.PricePerMetre,
-                Price = x.Area * x.PricePerMetre,
-                Rating = x.Rating,
-                RealEstateTypeId = x.RealEstateTypeId
-            });
-            return Ok(result);
+            var realEstateDtos = _mapper.Map<IEnumerable<RealEstateDTO>>(mod);
+            return Ok(realEstateDtos);
         }
 
         [HttpPost("Post", Name = "PostRealEstate")]
         public async Task<ActionResult> Post([FromBody] CreateRealEstateDTO dto)
         {
-            var input = new RealEstateModel
-            {
-                Address = dto.Adress,
-                Area = dto.Area,
-                PricePerMetre = dto.PricePerMetre,
-                Price = dto.PricePerMetre * dto.Area,
-                Rating = dto.Rating,
-                RealEstateTypeId = dto.RealEstateTypeId
-            };
+            var input = _mapper.Map<RealEstateModel>(dto);
             _dataContext.RealEstates.Add(input);
             _dataContext.SaveChanges();
             return Ok();
@@ -55,16 +42,7 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Get()
         {
             var mod = _dataContext.RealEstates;
-            var result = mod.Select(x => new RealEstateDTO
-            {
-                RealEstateId = x.Id,
-                Address = x.Address,
-                Area = x.Area,
-                PricePerMetre = x.PricePerMetre,
-                Price = x.Area * x.PricePerMetre,
-                Rating = x.Rating,
-                RealEstateTypeId = x.RealEstateTypeId
-            });
+            var result = _mapper.Map<RealEstateDTO>(mod);
             return Ok(result);
         }
 
