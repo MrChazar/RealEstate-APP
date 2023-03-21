@@ -29,7 +29,7 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Search([Required] string partOfName )
         {
             var mod = _dataContext.RealEstateTypes.Where(y => y.Name.Contains(partOfName));
-            var result = _mapper.Map<RealEstateTypeDTO>(mod);
+            var result = _mapper.Map<IEnumerable<RealEstateTypeDTO>>(mod);
             return Ok(result);
         }
 
@@ -37,10 +37,10 @@ namespace RealEstate.API.Controllers
         [HttpPost("Post",Name ="PostRealEstateType")]
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Post([FromBody]CreateRealEstateTypeDTO dto)
         {
-            if (_dataContext.RealEstateTypes.Any(x => x.Name == dto.Name))
-            {
-                return NotFound(); 
-            }
+            //if (_datacontext.realestatetypes.any(x => x.name == dto.name))
+            //{
+            //    return notfound(); 
+            //}
 
             var input = _mapper.Map<RealEstateTypeModel>(dto);
             _dataContext.RealEstateTypes.Add(input);
@@ -73,7 +73,7 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateTypeDTO>>> Get()
         {
             var mod = _dataContext.RealEstateTypes;
-            var result = _mapper.Map<RealEstateTypeDTO>(mod);
+            var result = _mapper.Map<IEnumerable<RealEstateTypeDTO>>(mod);
             return Ok(result);
         }
     }

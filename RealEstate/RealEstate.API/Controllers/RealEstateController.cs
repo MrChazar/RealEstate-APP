@@ -42,7 +42,7 @@ namespace RealEstate.API.Controllers
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Get()
         {
             var mod = _dataContext.RealEstates;
-            var result = _mapper.Map<RealEstateDTO>(mod);
+            var result = _mapper.Map<IEnumerable<RealEstateDTO>>(mod);
             return Ok(result);
         }
 
