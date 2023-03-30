@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
 namespace RealEstate.API.DTO
 {
-    public class CreateRealEstateDTO
+    public class CreateRealEstateDTO : IRequest
     {
+        
         [Required]
         [StringLength(100, MinimumLength = 3)]
         [RegularExpression("[A-Za-z]+ [0-9]+")]
@@ -17,6 +19,6 @@ namespace RealEstate.API.DTO
         public int Rating { get; set; }
         public decimal PricePerMetre { get; set; }
         public int RealEstateTypeId { get; set; }
-        public bool IsHighlyRated => Rating > 5;
+     //   public bool IsHighlyRated => Rating > 5;
     }
 }

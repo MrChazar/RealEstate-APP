@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cAuj+Tz3shAyqqZoDzum/BmxCFfhQ/yXXqxf54NN1ZwpdzJjJeZ+K30IWLRdYGOLzCdtBKsNhWfvF6LcC0JAWQ==",
+  "dgSpecHash": "MHyz5rSzWt6Kk+c6sEB6nuyTvHMSps9zfSrFB8q3htvtK61+jD+pt9TbUI7ImfnO54Cu4XenR9WEWlV/Lz288Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\Desktop\\prace kuby\\Programowanie\\C#\\rep\\RealEstate\\RealEstate.API\\RealEstate.API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\Asus\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

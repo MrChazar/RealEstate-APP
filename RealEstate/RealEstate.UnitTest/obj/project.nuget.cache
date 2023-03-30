@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "GctdnttTETKf7Z24VqSNHwMm37zLQaBK0jQh5Zpw5QOI56XnOzFmVpkHBui5KSWvsYwKSlB6WyV19GehWDEwYg==",
+  "dgSpecHash": "cHRpvXdbQT0Aoy8mxZCDbh1fI7r+TYNFCffE4JQ7sqA7pQDbqAi2smHabn98OFsrK8/moeDqqIYb5V6IHCZHZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Asus\\Desktop\\prace kuby\\Programowanie\\C#\\rep\\RealEstate\\RealEstate.UnitTest\\RealEstate.UnitTest.csproj",
   "expectedPackageFiles": [
@@ -10,6 +10,8 @@
     "C:\\Users\\Asus\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\fluentassertions\\6.9.0\\fluentassertions.6.9.0.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr\\12.0.1\\mediatr.12.0.1.nupkg.sha512",
+    "C:\\Users\\Asus\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

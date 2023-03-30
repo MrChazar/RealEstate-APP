@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MediatR;
+using System.ComponentModel.DataAnnotations;
 
 namespace RealEstate.API.DTO
 {
-    public class CreateRealEstateTypeDTO
+    public class CreateRealEstateTypeDTO : IRequest
     {
 
         [Required]

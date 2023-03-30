@@ -1,7 +1,10 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate.API.DTO;
+using RealEstate.API.Handlers;
 using RealEstate.API.Model;
+using RealEstate.API.Requests;
 using System.ComponentModel.DataAnnotations;
 using System.Xml;
 
@@ -11,39 +14,33 @@ namespace RealEstate.API.Controllers
     [Route("[controller]")]
     public class RealEstateController : ControllerBase
     {
-        private DataContext _dataContext;
-        private readonly IMapper _mapper;
+        
+        private readonly IMediator _mediatr;
 
-        public RealEstateController(DataContext dataContext,IMapper mapper)
+        public RealEstateController(IMediator mediatr)
         {
-            _dataContext = dataContext;
-            _mapper = mapper;
+            _mediatr = mediatr;
         }
 
 
         [HttpGet("Search", Name = "SearchRealEstate")]
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Search([Required] string partOfName)
         {
-            var mod = _dataContext.RealEstates.Where(y => y.Address.Contains(partOfName));
-            var realEstateDtos = _mapper.Map<IEnumerable<RealEstateDTO>>(mod);
-            return Ok(realEstateDtos);
+            
+            return Ok( await _mediatr.Send(new SearchRequest(partOfName)));
         }
 
         [HttpPost("Post", Name = "PostRealEstate")]
         public async Task<ActionResult> Post([FromBody] CreateRealEstateDTO dto)
         {
-            var input = _mapper.Map<RealEstateModel>(dto);
-            _dataContext.RealEstates.Add(input);
-            _dataContext.SaveChanges();
+            await _mediatr.Send(dto);
             return Ok();
         }
 
         [HttpGet("Get", Name = "GetRealEstate")]
         public async Task<ActionResult<IEnumerable<RealEstateDTO>>> Get()
         {
-            var mod = _dataContext.RealEstates;
-            var result = _mapper.Map<IEnumerable<RealEstateDTO>>(mod);
-            return Ok(result);
+            return Ok(await _mediatr.Send(new GetRealEstateRequest()));
         }
 
     }
