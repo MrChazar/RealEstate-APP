@@ -7,6 +7,9 @@ node_modules/
 # Ignoruj pliki wygenerowane przez .NET
 /bin/
 /obj/
+obj/
+packages/
+bin/
 debug/
 /debug/
 
