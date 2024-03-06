@@ -1,0 +1,32 @@
+# Ignoruj katalogi node_modules
+node_modules/
+
+# Ignoruj pliki wygenerowane przez React
+/build/
+
+# Ignoruj pliki wygenerowane przez .NET
+/bin/
+/obj/
+debug/
+/debug/
+
+# Ignoruj pliki związane z bazą danych SQL
+*.sql
+*.bak
+
+# Ignoruj pliki konfiguracyjne Visual Studio
+.vs/
+.vscode/
+\.vs\
+
+# Ignoruj pliki związane z testami
+/coverage/
+
+# Ignoruj pliki tymczasowe
+*.log
+*.tmp
+*.dll
+
+# Ignoruj pliki związane z systemem operacyjnym
+.DS_Store
+Thumbs.db
