@@ -12,8 +12,6 @@ namespace RealEstate.API.DTO
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
-     
-
         
     }
 }
