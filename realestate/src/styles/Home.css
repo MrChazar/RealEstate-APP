@@ -1,6 +1,14 @@
-#home_root
-{
+.home_root {
     background-image: url('../img/home_front.jpg');
     background-size: cover;
     background-position: top;
+    min-height: 100vh; /* Zmieniłem na min-height, aby zapewnić odpowiednią wysokość tła, gdy zawartość jest mniejsza niż wysokość ekranu */
+}
+
+#contain {
+    min-height: 100vh; /* Tak samo zmieniłem na min-height */
+}
+
+.footer {
+    flex-shrink: 0;
 }

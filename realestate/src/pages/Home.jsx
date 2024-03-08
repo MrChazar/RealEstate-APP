@@ -7,33 +7,41 @@ import Footer from '../components/Footer.jsx';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import EstateSearch from '../components/EstateSearch.jsx';
+import { useState } from 'react';
 
 
 const Home = () => {
     const { t } = useTranslation();
+    const [result, setResult] = useState();
     return (
-    <div>
+    <>
         <Navigation />
-        <Container>
-            <div className='home_root'>
-                <Row className="justify-content-md-center">
-                    <Col md="auto">
+        <div id='contain'>
+            <div className='container-fluid home_root'>
+                <Row className="justify-content-center">
+                    <Col xs="12" md="8" lg="6">
                         <div className='m-4 p-2 bg-dark rounded'>
                             <h1 className='text-white'>{t('welcome')}</h1>
                         </div>
                     </Col>
                 </Row>
-                <Row className="justify-content-md-center">
-                    <Col md="auto">
+                <Row className="justify-content-center">
+                    <Col xs="12" md="8" lg="6">
                         <div className='m-4 p-2 bg-white border border-dark rounded'>
                             <p className='text-dark'>{t('home_description')}</p>
                         </div>
                     </Col>
                 </Row>
+                <Row className="justify-content-center mt-3">
+                    <Col xs="12" md="8" lg="6" className='mt-3'>
+                        <EstateSearch />
+                    </Col>
+                </Row>
             </div>
-        </Container>
+        </div>
         <Footer />
-    </div>
+    </>
     );
 };
 
