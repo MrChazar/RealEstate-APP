@@ -9,16 +9,15 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import EstateSearch from '../components/EstateSearch.jsx';
 import { useState } from 'react';
-
+import SearchResult from '../components/SearchResult.jsx';
 
 const Home = () => {
     const { t } = useTranslation();
-    const [result, setResult] = useState();
     return (
     <>
         <Navigation />
         <div id='contain'>
-            <div className='container-fluid home_root'>
+            <div className='container-fluid home_root p-3'>
                 <Row className="justify-content-center">
                     <Col xs="12" md="8" lg="6">
                         <div className='m-4 p-2 bg-dark rounded'>
@@ -31,11 +30,6 @@ const Home = () => {
                         <div className='m-4 p-2 bg-white border border-dark rounded'>
                             <p className='text-dark'>{t('home_description')}</p>
                         </div>
-                    </Col>
-                </Row>
-                <Row className="justify-content-center mt-3">
-                    <Col xs="12" md="8" lg="6" className='mt-3'>
-                        <EstateSearch />
                     </Col>
                 </Row>
             </div>
