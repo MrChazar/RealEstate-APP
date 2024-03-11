@@ -36,6 +36,12 @@ i18n
           'name': 'Name',
           'address': 'Address',
           'description': 'Description',
+          'login': 'Login',
+          'email': 'Email',
+          'password': 'Password',
+          'email_required': 'Email is required',
+          'password_required': 'Password is required',
+          'register': 'Register',
         }
       },
       pl: {
@@ -68,6 +74,13 @@ i18n
           'name': 'Nazwa',
           'address': 'Adres',
           'description': 'Opis',
+          'login': 'Logowanie',
+          'email': 'Email',
+          'password': 'Hasło',
+          'email_required': 'Email jest wymagany',
+          'password_required': 'Hasło jest wymagane',
+          'register': 'Zarejestruj',
+      
         }
       }
     },

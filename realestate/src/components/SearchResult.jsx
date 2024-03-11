@@ -3,6 +3,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useTranslation } from 'react-i18next';
 import "../styles/SearchResult.css";
+import Image from 'react-bootstrap/Image';
 
 const SearchResult = ({result, toggleResult}) => {
     const { t } = useTranslation();
@@ -15,7 +16,7 @@ const SearchResult = ({result, toggleResult}) => {
             </Row>
             <Row className="justify-content-center">
                 <Col xs={12} md={6} className="d-flex justify-content-center mb-3">
-                    <img src="../public/img/home_pictures/home_1.jpg" className="img-fluid" alt="Responsive image"></img>
+                    <Image src="https://via.placeholder.com/300" rounded />
                 </Col>
             </Row>
             <Row className="text-center">
@@ -33,6 +34,11 @@ const SearchResult = ({result, toggleResult}) => {
                 <Col>
                     <h4>{t('description')}</h4>
                     <textarea rows='3' className="form-control"  value={result.Description} readOnly></textarea>
+                </Col>
+            </Row>
+            <Row className='text-center'>
+                <Col>
+                    <button onClick={toggleResult} className='btn btn-primary m-3 p-2'>{t('more')}</button>
                 </Col>
             </Row>
         </div>

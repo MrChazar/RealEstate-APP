@@ -27,7 +27,7 @@ const Home = () => {
                 </Row>
                 <Row className="justify-content-center">
                     <Col xs="12" md="8" lg="6">
-                        <div className='m-4 p-2 bg-white border border-dark rounded'>
+                        <div className='m-4 p-2 bg-white border border-dark text-center rounded'>
                             <p className='text-dark'>{t('home_description')}</p>
                         </div>
                     </Col>
