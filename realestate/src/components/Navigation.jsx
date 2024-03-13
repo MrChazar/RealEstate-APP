@@ -5,15 +5,28 @@ import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 
 
 const Navigation = () => {
 
     const { i18n } = useTranslation();
     const { t } = useTranslation();
+    const [initialized, setInitialized] = useState(false);
     
+    useEffect(() => { 
+        if (!initialized) {
+            const language = localStorage.getItem('i18nextLng') || 'pl';
+            i18n.changeLanguage(language);
+            setInitialized(true);
+        }
+    }, [i18n, initialized]);
+
     const changeLanguage = () => {
-        i18n.changeLanguage(i18n.language === 'en' ? 'pl' : 'en');
+        const newLanguage = i18n.language === 'en' ? 'pl' : 'en';
+        i18n.changeLanguage(newLanguage);
+        localStorage.setItem('i18nextLng', newLanguage);
+        window.location.reload();
     };
 
     return (

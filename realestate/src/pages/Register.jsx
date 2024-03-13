@@ -34,18 +34,31 @@ const Register = () => {
                     <Col xs="12" md="8" lg="6">
                         <div className='m-4 p-2 bg-white border border-dark rounded text-center m-3 p-2'>
                             <form onSubmit={handleSubmit(onSubmit)}>
-                            <div className="form-group">
-                                    <label htmlFor="Name" className="form-label">{t('name')}</label>
+                                <div className="form-group">
+                                    <label htmlFor="Name" className="form-label">{t('first_name')}</label>
                                     <input
                                         type="text"
                                         id="Name"
                                         className="form-control"
-                                        placeholder={t('name')}
+                                        placeholder={t('first_name')}
                                         {...register("Name", {
                                             required: t('name_required'),
                                         })}
                                     />
-                                    {errors.Name && <p>{errors.Name.message}</p>}
+                                    {errors.Name && <p className='text-danger'>{errors.Name.message}</p>}
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="Surname" className="form-label">{t('surname')}</label>
+                                    <input
+                                        type="text"
+                                        id="Surname"
+                                        className="form-control"
+                                        placeholder={t('surname')}
+                                        {...register("Surname", {
+                                            required: t('surname_required'),
+                                        })}
+                                    />
+                                    {errors.Surname && <p className='text-danger'>{errors.Surname.message}</p>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Email" className="form-label">{t('email')}</label>
@@ -58,7 +71,7 @@ const Register = () => {
                                             required: t('email_required'),
                                         })}
                                     />
-                                    {errors.Email && <p>{errors.Email.message}</p>}
+                                    {errors.Email && <p className='text-danger'>{errors.Email.message}</p>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Password" className="form-label">{t('password')}</label>
@@ -75,7 +88,7 @@ const Register = () => {
                                             }
                                         })}
                                     />
-                                    {errors.Password && <p>{errors.Password.message}</p>}
+                                    {errors.Password && <p className='text-danger'>{errors.Password.message}</p>}
                                 </div>
                                 <button type="submit" className="btn btn-primary m-3 p-2">{t('login')}</button>
                             </form>

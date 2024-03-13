@@ -45,7 +45,7 @@ const Login = () => {
                                             required: t('email_required'),
                                         })}
                                     />
-                                    {errors.Email && <p>{errors.Email.message}</p>}
+                                    {errors.Email && <p className='text-danger'>{errors.Email.message}</p>}
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="Password" className="form-label">{t('password')}</label>
@@ -62,7 +62,7 @@ const Login = () => {
                                             }
                                         })}
                                     />
-                                    {errors.Password && <p>{errors.Password.message}</p>}
+                                    {errors.Password && <p className='text-danger'>{errors.Password.message}</p>}
                                 </div>
                                 <button type="submit" className="btn btn-primary m-3 p-2">{t('login')}</button>
                             </form>

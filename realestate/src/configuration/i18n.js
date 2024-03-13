@@ -1,6 +1,8 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
+const language = localStorage.getItem('i18nextLng') || 'pl';
+
 i18n
   .use(initReactI18next)
   .init({
@@ -33,6 +35,7 @@ i18n
           'reset_criteria': 'Reset criteria',
           'from': 'from',
           'to': 'to',
+          'first_name': 'First name',
           'name': 'Name',
           'address': 'Address',
           'description': 'Description',
@@ -42,6 +45,9 @@ i18n
           'email_required': 'Email is required',
           'password_required': 'Password is required',
           'register': 'Register',
+          'surname_required': 'Surname is required',
+          'surname': 'Surname',
+          'name_required': 'Name is required',
         }
       },
       pl: {
@@ -72,6 +78,7 @@ i18n
           'from': 'od',
           'to': 'do',
           'name': 'Nazwa',
+          'first_name': 'Imię',
           'address': 'Adres',
           'description': 'Opis',
           'login': 'Logowanie',
@@ -80,6 +87,9 @@ i18n
           'email_required': 'Email jest wymagany',
           'password_required': 'Hasło jest wymagane',
           'register': 'Zarejestruj',
+          'surname_required': 'Nazwisko jest wymagane',
+          'surname': 'Nazwisko',  
+          'name_required': 'Imię jest wymagane',   
       
         }
       }
