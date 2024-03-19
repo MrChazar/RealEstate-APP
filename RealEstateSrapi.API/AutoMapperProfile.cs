@@ -13,7 +13,8 @@ namespace RealEstate.API
             CreateMap<RealEstateModel, RealEstateDTO>()
                 .ForMember(dest => dest.RealEstateId, opt => opt.MapFrom(src => src.Id));
             CreateMap<RealEstateDTO, RealEstateModel>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.RealEstateTypeId));
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.RealEstateTypeId))
+                .ForMember(dest => dest.RealEstateType, opt => opt.MapFrom(src => src.RealEstateTypeId));
             CreateMap<IEnumerable<RealEstateModel>, RealEstateDTO>();
 
             CreateMap<CreateRealEstateDTO, RealEstateModel>()
@@ -22,7 +23,13 @@ namespace RealEstate.API
                 .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
                 .ForMember(dest => dest.PricePerMetre, opt => opt.MapFrom(src => src.PricePerMetre));
                 
-            
+            // Mapping in various ways between RealEstateTypeDTO,CreateRealEstateTypeDTO, and RealEstateTypeModel
+            CreateMap<RealEstateTypeModel, RealEstateTypeDTO>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
+                .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description));
+            CreateMap<RealEstateTypeDTO, RealEstateTypeModel>();
+            CreateMap<IEnumerable<RealEstateTypeModel>, RealEstateTypeDTO>();
+            CreateMap<CreateRealEstateTypeDTO, RealEstateTypeModel>();
            
         }
     }
